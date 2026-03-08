@@ -1,73 +1,57 @@
-# React + TypeScript + Vite
+# Trading Control Template
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A reusable React + TypeScript + Vite dashboard template for trading, monitoring, and operations interfaces.
 
-Currently, two official plugins are available:
+This repository is a front-end snapshot only. It keeps the layout system, shell, cards, tables, filters, and glass-panel styling, but removes the original product branding so you can adapt it to your own app.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## What This Template Includes
 
-## React Compiler
+- multi-page dashboard shell with sidebar and top status bar
+- KPI cards, section frames, tables, filters, and empty states
+- a system/control page for runtime actions and configuration
+- Zustand state stores for UI and filter persistence
+- React Query hooks and a typed API client structure
+- Tailwind CSS with reusable UI primitives
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## What You Should Replace
 
-## Expanding the ESLint configuration
+- `lib/api/client.ts` and `lib/api/endpoints.ts`
+  Connect the template to your own backend.
+- `lib/hooks/*`
+  Swap the current dashboard/runtime hooks for your own data adapters.
+- `lib/types/*`
+  Update the view models to match your domain.
+- route and section copy in `pages/*`
+  Rename labels and descriptions to fit your product language.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## Local Development
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm install
+npm run dev
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+Build for production:
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm run build
 ```
+
+Preview the production build:
+
+```bash
+npm run preview
+```
+
+## Suggested Adaptation Path
+
+1. Replace the API client and hooks.
+2. Rename page titles and navigation to your product language.
+3. Keep the shared shell and UI primitives as the design system base.
+4. Remove any remaining crypto-specific wording you do not need.
+
+## Notes
+
+- `dist/` is intentionally ignored.
+- This repo is a UI template, not a complete backend-integrated product.
+- If you want demo data, add it in a separate adapter layer instead of hardcoding it into view components.

@@ -142,7 +142,7 @@ export const useFiltersStore = create<FiltersState>()(
         }),
     }),
     {
-      name: "oclay-filters",
+      name: "trading-template-filters",
     }
   )
 );

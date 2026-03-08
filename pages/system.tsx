@@ -126,7 +126,7 @@ export default function SystemPage() {
       setActionMessage("");
       await stopWorkflow();
       await refetch();
-      setActionMessage("Workflow stopped. Backend is now in observe mode.");
+      setActionMessage("Workflow stopped. Runtime is now idle.");
     } catch (err) {
       const message = err instanceof Error ? err.message : String(err);
       setActionMessage(`Stop failed: ${message}`);
@@ -137,7 +137,7 @@ export default function SystemPage() {
     <div className="space-y-6">
       <PageHeader
         title="System"
-        description="Runtime configuration and workflow connectivity"
+        description="Runtime controls and data source connectivity"
       />
 
       <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
@@ -146,7 +146,7 @@ export default function SystemPage() {
             <StatusDot status={data.botRunning ? "ok" : "warning"} pulsing={data.botRunning} size="lg" />
             <div className="space-y-1">
               <div className="text-sm font-medium text-[#F2F5FA]">
-                {data.botRunning ? "Bot Running" : "No Bot Attached"}
+                {data.botRunning ? "Workflow Running" : "No Workflow Attached"}
               </div>
               <div className="flex flex-wrap gap-2">
                 <Badge variant="info">{data.workflowMode.toUpperCase()}</Badge>
@@ -388,12 +388,12 @@ export default function SystemPage() {
               },
               {
                 key: "botStarted",
-                label: "Bot Started",
+                label: "Workflow Started",
                 value: data.botStartedAtMs ? formatRelativeTime(data.botStartedAtMs) : "--",
               },
               {
                 key: "botStopped",
-                label: "Bot Stopped",
+                label: "Workflow Stopped",
                 value: data.botStoppedAtMs ? formatRelativeTime(data.botStoppedAtMs) : "--",
               },
               {
@@ -417,8 +417,8 @@ export default function SystemPage() {
           <div>
             <h3 className="text-sm font-medium text-[#F6B046]">Security Notice</h3>
             <p className="mt-1 text-xs text-[#A7AFBF]">
-              Secrets and private keys are never exposed to the dashboard. This UI only receives
-              filtered operational state from the local backend.
+              Keep credentials and signing material outside the UI layer. Connect this template to
+              a filtered read model, or replace the hooks in `lib/hooks` with your own adapters.
             </p>
           </div>
         </div>

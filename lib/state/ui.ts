@@ -71,7 +71,7 @@ export const useUIStore = create<UIState>()(
         set((state) => ({ showNotifications: !state.showNotifications })),
     }),
     {
-      name: "oclay-ui",
+      name: "trading-template-ui",
       partialize: (state) => ({
         sidebarCollapsed: state.sidebarCollapsed,
         theme: state.theme,

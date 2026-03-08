@@ -1,31 +1,40 @@
-Using Node.js 20, Tailwind CSS v3.4.19, and Vite v7.2.4
+Trading Control Template
+========================
 
-Tailwind CSS has been set up with the shadcn theme
+Purpose
+-------
+Reusable dashboard UI scaffold for trading, risk, execution, and operations products.
 
-Setup complete: /mnt/okcomputer/output/app
+Stack
+-----
+- React 18
+- TypeScript
+- Vite
+- Tailwind CSS
+- Zustand
+- TanStack Query
+- TanStack Table
+- Recharts
 
-Components (40+):
-  accordion, alert-dialog, alert, aspect-ratio, avatar, badge, breadcrumb,
-  button-group, button, calendar, card, carousel, chart, checkbox, collapsible,
-  command, context-menu, dialog, drawer, dropdown-menu, empty, field, form,
-  hover-card, input-group, input-otp, input, item, kbd, label, menubar,
-  navigation-menu, pagination, popover, progress, radio-group, resizable,
-  scroll-area, select, separator, sheet, sidebar, skeleton, slider, sonner,
-  spinner, switch, table, tabs, textarea, toggle-group, toggle, tooltip
+Template Areas
+--------------
+- `components/shell/`
+  App chrome, top bar, sidebar
+- `components/cards/`
+  KPI and status cards
+- `components/tables/`
+  Reusable data tables
+- `components/ui/`
+  Base controls and wrappers
+- `pages/`
+  Route-level layouts
+- `lib/hooks/`
+  Data adapters to replace
+- `lib/types/`
+  View-model contracts to adapt
 
-Usage:
-  import { Button } from '@/components/ui/button'
-  import { Card, CardHeader, CardTitle } from '@/components/ui/card'
-
-Structure:
-  src/sections/        Page sections
-  src/hooks/           Custom hooks
-  src/types/           Type definitions
-  src/App.css          Styles specific to the Webapp
-  src/App.tsx          Root React component
-  src/index.css        Global styles
-  src/main.tsx         Entry point for rendering the Webapp
-  index.html           Entry point for the Webapp
-  tailwind.config.js   Configures Tailwind's theme, plugins, etc.
-  vite.config.ts       Main build and dev server settings for Vite
-  postcss.config.js    Config file for CSS post-processing tools
+Conversion Notes
+----------------
+- Branding has been neutralized for reuse.
+- Persisted storage keys are genericized.
+- The data layer is still dashboard/runtime oriented; swap the hooks before using this in another product.

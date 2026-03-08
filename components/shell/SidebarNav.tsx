@@ -45,11 +45,11 @@ export function SidebarNav() {
       {/* Logo */}
       <div className="flex h-14 items-center border-b border-[rgba(142,152,169,0.12)] px-4">
         <div className="flex h-7 w-7 items-center justify-center rounded bg-[#2EC3E5]/15">
-          <span className="text-sm font-bold text-[#2EC3E5]">O</span>
+          <span className="text-sm font-bold text-[#2EC3E5]">T</span>
         </div>
         {!sidebarCollapsed && (
           <span className="ml-3 text-sm font-semibold text-[#F2F5FA]">
-            Oclay
+            Template
           </span>
         )}
       </div>
